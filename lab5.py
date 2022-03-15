@@ -216,8 +216,8 @@ if __name__ == '__main__':
                 launch(exact_room)
 
     backpack_lst = []
-    ballroom_items_lst = ['cheese', 'shoes', 'cheese', 'flowers']
-    hall_items_lst = ['book', 'dress']
+    ballroom_items_lst = ['cheese', 'cup', 'garlic']
+    hall_items_lst = ['book', 'pen']
 
     def launch(exact_room):
         """
