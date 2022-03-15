@@ -102,6 +102,9 @@ class Object:
         elif self.room == 'Dinner Hall':
             if len(self.hall_items) != 0:
                 self.item_name = self.hall_items[0]
+            else:
+                self.item_name = None
+
         else:
             self.item_name = None
 
@@ -216,8 +219,8 @@ if __name__ == '__main__':
                 launch(exact_room)
 
     backpack_lst = []
-    ballroom_items_lst = ['cheese', 'cup', 'garlic']
-    hall_items_lst = ['book', 'pen']
+    ballroom_items_lst = ['cheese', 'shoes', 'cheese', 'flowers']
+    hall_items_lst = ['book', 'dress']
 
     def launch(exact_room):
         """
@@ -240,8 +243,7 @@ if __name__ == '__main__':
                 item = Character(exact_room, item_name[1][1:-1]).take(hall_items_lst, ballroom_items_lst)
                 print(item)
                 backpack_lst.append(item_name[1][1:-1])
-                print(f'The items in backpack are {backpack_lst}')
-            except:
+            except IndexError:
                 item = Character(exact_room, name_txt).take(hall_items_lst, ballroom_items_lst)
                 print(item)
             operate(exact_room)
@@ -250,15 +252,16 @@ if __name__ == '__main__':
             try:
                 item_name = name_txt.split()
                 print(Character(exact_room, item_name[1][1:-1]).talk())
-            except:
+            except IndexError:
                 print(Character(exact_room, name_txt).talk())
             operate(exact_room)
         elif command_input == 'fight':
             try:
                 item_name = name_txt.split()
+                print(f'The items in backpack are {backpack_lst}')
                 length = Character(exact_room, item_name[1][1:-1]).fight(enemy, backpack_lst)
                 print(length)
-            except:
+            except IndexError:
                 length = Character(exact_room, name_txt).fight(enemy, backpack_lst)
                 print(length)
 
@@ -270,5 +273,7 @@ if __name__ == '__main__':
                 operate(exact_room)
             else:
                 operate(exact_room)
+        else:
+            operate(exact_room)
 
 introduction()
