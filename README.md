@@ -1,6 +1,8 @@
 # lab4_5
 Game for university task
 
+**Sorry for some changings in program, I decided to make it more convinient**
+
 
                                                                Description:
                                                                 
